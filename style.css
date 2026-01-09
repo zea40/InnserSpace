@@ -1,0 +1,142 @@
+body {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #e8f0ff, #fdfdfd);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 60px;
+}
+
+/* JUDUL */
+h1 {
+  margin-bottom: 5px;
+}
+
+p {
+  margin-bottom: 25px;
+  color: #555;
+}
+
+/* CARD MELAYANG */
+.card {
+  background: white;
+  width: 90%;
+  max-width: 500px;
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.12);
+}
+
+/* TEXTAREA IMUT */
+textarea {
+  width: 100%;
+  height: 180px;
+  padding: 12px;
+  font-size: 15px;
+  border-radius: 12px;
+  border: 1px solid #ddd;
+  resize: none;
+  box-sizing: border-box;
+  outline: none;
+}
+
+textarea:focus {
+  border-color: #7aa2ff;
+}
+
+/* BUTTON */
+button {
+  margin-top: 15px;
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 12px;
+  background: #7aa2ff;
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #5f86e5;
+}
+
+/* LINK */
+a {
+  margin-top: 20px;
+  text-decoration: none;
+}
+
+/* POPUP */
+.popup {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+}
+
+.popup-content {
+  background: white;
+  padding: 20px;
+  border-radius: 14px;
+  max-width: 400px;
+  margin: 150px auto;
+}
+
+.close {
+  float: right;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+/* ANIMASI POPUP */
+.popup {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.popup.show {
+  display: block;
+  opacity: 1;
+}
+
+.popup-content {
+  background: white;
+  padding: 20px;
+  border-radius: 14px;
+  max-width: 400px;
+  margin: 150px auto;
+  transform: scale(0.9);
+  transition: transform 0.3s ease;
+}
+
+/* HISTORY POPUP */
+.popup.show .popup-content {
+  transform: scale(1);
+}
+
+.history-card {
+  background: white;
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 14px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+}
+
+.history-card small {
+  color: #777;
+}
+
+.danger {
+  background: #5f86e5;
+  color: white;
+  padding: 10px 14px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
