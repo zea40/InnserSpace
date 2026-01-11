@@ -1,5 +1,6 @@
 function cariAyat() {
   const text = document.getElementById("curhat").value.toLowerCase();
+  document.getElementById("kirimBtn").addEventListener("click", cariAyat);
 
   // ambil semua ayat yang keyword-nya cocok
   const cocok = dataAyat.filter(item =>
