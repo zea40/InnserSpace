@@ -4,11 +4,11 @@ document.addEventListener("DOMContentLoaded", () => {
     .addEventListener("click", cariAyat);
 });
 
-function cariAyat() {
+function cariayat() {
   const text = document.getElementById("curhat").value.toLowerCase();
 
   // ambil semua ayat yang keyword-nya cocok
-  const cocok = dataAyat.filter(item =>
+  const cocok = dataayat.filter(item =>
     text.includes(item.keyword)
   );
 
@@ -38,7 +38,7 @@ function cariAyat() {
   if (arti) hasil += "\n\n" + arti;
   if (surat) hasil += "\n(" + surat + ")";
 
-  document.getElementById("hasilAyat").innerText = hasil;
+  document.getElementById("hasilayat").innerText = hasil;
   document.getElementById("popup").classList.add("show");
 }
 
