@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   document
     .getElementById("kirimBtn")
-    .addEventListener("click", cariAyat);
+    .addEventListener("click", cariayat);
 });
 
 function cariayat() {
