@@ -1,13 +1,18 @@
+document.addEventListener("DOMContentLoaded", () => {
+  document
+    .getElementById("kirimBtn")
+    .addEventListener("click", cariAyat);
+});
+
 function cariAyat() {
   const text = document.getElementById("curhat").value.toLowerCase();
-  document.getElementById("kirimBtn").addEventListener("click", cariAyat);
 
   // ambil semua ayat yang keyword-nya cocok
   const cocok = dataAyat.filter(item =>
     text.includes(item.keyword)
   );
 
-  let ayat = "Allah selalu dekat, jangan nyerah";
+  let ayat = "Allah selalu dekat, jangan nyerah 🤍";
   let arti = "";
   let surat = "";
 
@@ -39,8 +44,4 @@ function cariAyat() {
 
 function tutupPopup() {
   document.getElementById("popup").classList.remove("show");
-}
-
-function lihatRiwayat() {
-  alert("Riwayat bisa kamu kembangin lagi nanti");
 }
