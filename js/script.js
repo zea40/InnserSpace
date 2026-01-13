@@ -1,16 +1,15 @@
-function cariayat() {
+function cariAyat() {
   console.log("TOMBOL KEKLIK");
 
   const text = document.getElementById("curhat").value.toLowerCase();
 
-  if (typeof dataayat === "undefined") {
+  if (!window.dataayat) {
     alert("dataayat belum ke-load");
     return;
   }
 
-  // ambil ayat
   const cocok = dataayat.filter(item =>
-    text.includes(item.keyword)
+    item.keyword.some(k => text.includes(k))
   );
 
   let ayat = "Allah selalu dekat, jangan nyerah 🤍";
@@ -20,8 +19,8 @@ function cariayat() {
   if (cocok.length > 0) {
     const random = cocok[Math.floor(Math.random() * cocok.length)];
     ayat = random.ayat;
-    arti = random.arti || "";
-    surat = random.surat || "";
+    arti = random.arti;
+    surat = random.surat;
   }
 
   // SIMPAN RIWAYAT
@@ -35,11 +34,8 @@ function cariayat() {
   });
   localStorage.setItem("riwayat", JSON.stringify(riwayat));
 
-  let hasil = ayat;
-  if (arti) hasil += "\n\n" + arti;
-  if (surat) hasil += "\n(" + surat + ")";
-
-  document.getElementById("hasilayat").innerText = hasil;
+  let hasil = ayat + "\n\n" + arti + "\n(" + surat + ")";
+  document.getElementById("hasilAyat").innerText = hasil;
   document.getElementById("popup").classList.add("show");
 }
 
