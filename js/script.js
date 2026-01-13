@@ -1,13 +1,14 @@
-document.addEventListener("DOMContentLoaded", () => {
-  document
-    .getElementById("kirimBtn")
-    .addEventListener("click", cariayat);
-});
+function cariAyat() {
+  console.log("TOMBOL KEKLIK 🔥");
 
-function cariayat() {
   const text = document.getElementById("curhat").value.toLowerCase();
 
-  // ambil semua ayat yang keyword-nya cocok
+  if (typeof dataAyat === "undefined") {
+    alert("dataAyat belum ke-load 😭");
+    return;
+  }
+
+  // ambil ayat
   const cocok = dataayat.filter(item =>
     text.includes(item.keyword)
   );
