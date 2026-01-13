@@ -1,10 +1,10 @@
-function cariAyat() {
-  console.log("TOMBOL KEKLIK 🔥");
+function cariayat() {
+  console.log("TOMBOL KEKLIK");
 
   const text = document.getElementById("curhat").value.toLowerCase();
 
-  if (typeof dataAyat === "undefined") {
-    alert("dataAyat belum ke-load 😭");
+  if (typeof dataayat === "undefined") {
+    alert("dataayat belum ke-load");
     return;
   }
 
