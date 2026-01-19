@@ -1,45 +1,33 @@
-function cariayat() {
-  const text = document.getElementById("curhat").value.toLowerCase();
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>InnerSpace</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
 
-  // ambil semua ayat yang keyword-nya cocok
-  const cocok = dataayat.filter(item =>
-    text.includes(item.keyword)
-  );
+  <h1>InnerSpace</h1>
+  <p>Tulis curhatanmu. Kamu nggak sendirian</p>
 
-  let ayat = "Allah selalu dekat, jangan nyerah";
-  let arti = "";
-  let surat = "";
+  <div class="card">
+  <textarea id="curhat" placeholder="Tulis isi hatimu di sini..."></textarea>
+  <button onclick="cariayat()">Kirim</button>
+</div>
 
-  if (cocok.length > 0) {
-    const random = cocok[Math.floor(Math.random() * cocok.length)];
-    ayat = random.ayat;
-    arti = random.arti || "";
-    surat = random.surat || "";
-  }
+  <br><br>
+  <a href="history.html">Lihat Riwayat</a>
 
-  // SIMPAN RIWAYAT
-  let riwayat = JSON.parse(localStorage.getItem("riwayat")) || [];
-  riwayat.push({
-    curhat: text,
-    ayat,
-    arti,
-    surat,
-    waktu: new Date().toLocaleString()
-  });
-  localStorage.setItem("riwayat", JSON.stringify(riwayat));
+  <!-- POPUP MOTIVASI -->
+  <div id="popup" class="popup">
+    <div class="popup-content">
+      <span class="close" onclick="tutupPopup()">&times;</span>
+      <h3>Motivasi untukmu!</h3>
+      <p id="hasilayat"></p>
+    </div>
+  </div>
 
-  let hasil = ayat;
-  if (arti) hasil += "\n\n" + arti;
-  if (surat) hasil += "\n(" + surat + ")";
-
-  document.getElementById("hasilayat").innerText = hasil;
-  document.getElementById("popup").classList.add("show");
-}
-
-function tutupPopup() {
-  document.getElementById("popup").classList.remove("show");
-}
-
-function lihatRiwayat() {
-  alert("Riwayat bisa kamu kembangin lagi nanti");
-}
+  <script src="js/dataAyat.js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>
