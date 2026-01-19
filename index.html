@@ -7,22 +7,27 @@
 </head>
 <body>
 
-<h1>InnerSpace</h1>
-<p>Tulis curhatanmu. Kamu nggak sendirian</p>
+  <h1>InnerSpace</h1>
+  <p>Tulis curhatanmu. Kamu nggak sendirian</p>
 
-<div class="card">
-  <textarea id="curhat"></textarea>
+  <div class="card">
+  <textarea id="curhat" placeholder="Tulis isi hatimu di sini..."></textarea>
   <button onclick="cariAyat()">Kirim</button>
 </div>
 
-<div id="popup" class="popup">
-  <div class="popup-content">
-    <span onclick="tutupPopup()">×</span>
-    <p id="hasilayat"></p>
-  </div>
-</div>
+  <br><br>
+  <a href="history.html">Lihat Riwayat</a>
 
-<script src="js/dataayat.js"></script>
-<script src="js/script.js"></script>
+  <!-- POPUP MOTIVASI -->
+  <div id="popup" class="popup">
+    <div class="popup-content">
+      <span class="close" onclick="tutupPopup()">&times;</span>
+      <h3>Motivasi untukmu!</h3>
+      <p id="hasilAyat"></p>
+    </div>
+  </div>
+
+  <script src="js/dataAyat.js"></script>
+  <script src="js/script.js"></script>
 </body>
 </html>
