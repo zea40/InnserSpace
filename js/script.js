@@ -1,17 +1,45 @@
 function cariAyat() {
-  console.log("KEKLIK 🔥");
-
   const text = document.getElementById("curhat").value.toLowerCase();
-  const cocok = dataayat.filter(d => text.includes(d.keyword));
 
-  const hasil = cocok.length
-    ? cocok[Math.floor(Math.random() * cocok.length)].ayat
-    : "Allah selalu dekat 🤍";
+  // ambil semua ayat yang keyword-nya cocok
+  const cocok = dataAyat.filter(item =>
+    text.includes(item.keyword)
+  );
 
-  document.getElementById("hasilayat").innerText = hasil;
+  let ayat = "Allah selalu dekat, jangan nyerah";
+  let arti = "";
+  let surat = "";
+
+  if (cocok.length > 0) {
+    const random = cocok[Math.floor(Math.random() * cocok.length)];
+    ayat = random.ayat;
+    arti = random.arti || "";
+    surat = random.surat || "";
+  }
+
+  // SIMPAN RIWAYAT
+  let riwayat = JSON.parse(localStorage.getItem("riwayat")) || [];
+  riwayat.push({
+    curhat: text,
+    ayat,
+    arti,
+    surat,
+    waktu: new Date().toLocaleString()
+  });
+  localStorage.setItem("riwayat", JSON.stringify(riwayat));
+
+  let hasil = ayat;
+  if (arti) hasil += "\n\n" + arti;
+  if (surat) hasil += "\n(" + surat + ")";
+
+  document.getElementById("hasilAyat").innerText = hasil;
   document.getElementById("popup").classList.add("show");
 }
 
 function tutupPopup() {
   document.getElementById("popup").classList.remove("show");
+}
+
+function lihatRiwayat() {
+  alert("Riwayat bisa kamu kembangin lagi nanti");
 }
