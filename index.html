@@ -1,36 +1,45 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-  <meta charset="UTF-8">
-  <title>InnerSpace</title>
-  <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
+function cariayat() {
+  const text = document.getElementById("curhat").value.toLowerCase();
 
-  <h1>InnerSpace</h1>
-  <p>Tulis curhatanmu. Kamu nggak sendirian</p>
+  // ambil semua ayat yang keyword-nya cocok
+  const cocok = dataayat.filter(item =>
+    text.includes(item.keyword)
+  );
 
-  <div class="card">
-    <textarea id="curhat" placeholder="Tulis isi hatimu di sini..."></textarea>
-    <button onclick="cariayat()">Kirim</button>
-  </div>
+  let ayat = "Allah selalu dekat, jangan nyerah";
+  let arti = "";
+  let surat = "";
 
-  <br><br>
-  <a href="history.html">Lihat Riwayat</a>
+  if (cocok.length > 0) {
+    const random = cocok[Math.floor(Math.random() * cocok.length)];
+    ayat = random.ayat;
+    arti = random.arti || "";
+    surat = random.surat || "";
+  }
 
-  <!-- POPUP -->
-  <div id="popup" class="popup">
-    <div class="popup-content">
-      <span class="close" onclick="tutupPopup()">&times;</span>
-      <h3>Motivasi untukmu!</h3>
-      <p id="hasilAyat"></p>
-    </div>
-  </div>
+  // SIMPAN RIWAYAT
+  let riwayat = JSON.parse(localStorage.getItem("riwayat")) || [];
+  riwayat.push({
+    curhat: text,
+    ayat,
+    arti,
+    surat,
+    waktu: new Date().toLocaleString()
+  });
+  localStorage.setItem("riwayat", JSON.stringify(riwayat));
 
-  <!-- WAJIB URUTAN INI -->
-  <script src="js/dataayat.js"></script>
-  <script src="js/script.js"></script>
+  let hasil = ayat;
+  if (arti) hasil += "\n\n" + arti;
+  if (surat) hasil += "\n(" + surat + ")";
 
-</body>
-</html>
+  document.getElementById("hasilayat").innerText = hasil;
+  document.getElementById("popup").classList.add("show");
+}
 
+function tutupPopup() {
+  document.getElementById("popup").classList.remove("show");
+}
+
+function lihatRiwayat() {
+  alert("Riwayat bisa kamu kembangin lagi nanti");
+}
